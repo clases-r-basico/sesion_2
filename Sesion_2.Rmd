@@ -117,9 +117,17 @@ background-position: 100% 0%
 
 # Importación de datos
 
-El paquete **`haven`** forma parte del universo de **`tidyverse`**, pero a 
-diferencia de otros paquetes de ese universo, es necesario cargar la librería
-para poder usar las funciones asociadas.
+El paquete **`haven`** forma parte del universo de **`tidyverse`**
+
+--
+
+```{r, warning=FALSE, eval=FALSE}
+library(haven)
+# El archivo se puede cargar desde una carpeta...
+esi <- read_dta(file = "C:/Users/usuario/Desktop/esi-2019---personas.dta")
+# ...o desde un sitio web
+esi <- read_sav(file = "http://www.ine.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/spss_esi/2019/esi-2019---personas.sav")
+```
 
 --
 
@@ -130,15 +138,7 @@ Las funciones incluídas consideran un lenguaje bastante explícito:
 - SPSS: `read_sav()` permite importar archivos con extensión ".sav".
 
 - SAS: `read_sas()` permite importar archivos con extensión ".sas7bdat".
---
 
-```{r, warning=FALSE, eval=FALSE}
-library(haven)
-# El archivo se puede cargar desde una carpeta...
-esi <- read_dta(file = "C:/Users/usuario/Desktop/esi-2019---personas.dta")
-# ...o desde un sitio web
-esi <- read_sav(file = "http://www.ine.cl/docs/default-source/encuesta-suplementaria-de-ingresos/bbdd/spss_esi/2019/esi-2019---personas.sav")
-```
 
 --
 
@@ -164,8 +164,8 @@ al momento de importar los archivos?
 
 - Directorio de trabajo
 
-El directorio o carpeta de trabajo es el lugar en nuestra computadora donde R 
-buscará archivos para importarlos y al que serán exportados.
+El directorio o carpeta de trabajo es el lugar en nuestro computador donde R 
+buscará archivos para importarlos.
 
 --
 
@@ -251,13 +251,12 @@ ficticios, etiquetados secuencialmente desde X1 a Xn.
 
 El paquete `readxl` nos permite importar archivos de Excel.
 
-Una de sus funciones es `read_excel()`, y al igual que las funciones vistas 
-previamente, se debe definir el argumento donde se encuentra el archivo, que 
-en esta función se llama `path`.
+Una de sus funciones es `read_excel()`. 
 
-A diferencias de los otros tipos de archivos que hemos visto, los libros de 
-excel pueden contar con más de una hoja; el argumento `sheet` se utiliza para 
-definir hoja que se importará.
+Se debe definir donde se encuentra el archivo con el parámetro `path`
+
+Los libros de Excel pueden tener más de una hoja; el argumento `sheet` se utiliza para 
+definir la hoja que se importará.
 
 ```{r, warning=FALSE, eval=FALSE}
 library(readxl)
@@ -300,6 +299,51 @@ No se debe asignar el valor al objeto a cargar.
 load(file = "data/esi-2019---personas.RData")
 ```
 
+--
+
+La desventaja de `load` es que no tenemos la posibilidad de nombrar el objeto
+
+--
+
+Se cargará en el ambiente con el nombre con el que fue guardado el archivo 
+
+
+---
+background-image: url("imagenes/fondo2.PNG")
+background-size: contain;
+background-position: 100% 0%
+
+
+# Importación de datos
+
+- Importación feather
+
+Wes McKinney y Hadley Wickham implementaron formato feather
+
+--
+
+Funciona para python y R 
+
+--
+
+Es muy liviano
+
+--
+
+Tarda muy poco en leer (read) y escribir (write)
+
+--
+
+Nos permite nombrar el objeto que estamos cargando en el ambiente
+
+```{r, eval=FALSE}
+library(feather)
+ene <-  read_feather("data/ene-2019-11.feather")
+```
+
+--
+
+### Es muy recomendable trabajar con el formato feather
 
 ---
 
@@ -447,7 +491,7 @@ acompañarán en nuestro camino de programación.
 --
 
 Como veremos en esta sesión, una de las principales ventajas de estas funciones 
-es que podemos referirnos a las columnas en el data frame directamente sin 
+es que podemos referirnos a las columnas en el data frame directamente, sin 
 utilizar el operador "**$**", es decir, solo con el nombre de la variable.
 
 ---
