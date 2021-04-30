@@ -4,7 +4,7 @@
     <title>Capacitación en R y herramientas de productividad</title>
     <meta charset="utf-8" />
     <meta name="author" content="" />
-    <meta name="date" content="2021-04-08" />
+    <meta name="date" content="2021-04-30" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -89,13 +89,14 @@ Estos archivos pueden ser asignados a un objeto.
 
 En esta sesión veremos como importar:
 
-    - Archivos de STATA (.dta) y de SPSS (.sav).
+    - Archivos de STATA (.dta), de SAS (.sas7bdat) y de SPSS (.sav).
     
     - Archivos de texto plano delimitados (.csv).
     
     - Archivos de excel (.xlsx, .xls).
+    
 --
-Para importar archivos guardados desde STATA o SPSS, existe el paquete `haven`.
+Para importar archivos guardados desde STATA, SAS o SPSS, existe el paquete `haven`.
 
 
 .center[&lt;img src="imagenes/logo_haven.png" width="200" /&gt;]
@@ -120,6 +121,7 @@ Las funciones incluídas consideran un lenguaje bastante explícito:
 
 - SPSS: `read_sav()` permite importar archivos con extensión ".sav".
 
+- SAS: `read_sas()` permite importar archivos con extensión ".sas7bdat".
 --
 
 
@@ -169,7 +171,7 @@ getwd()
 ```
 
 ```
-## [1] "C:/Users/Trabajo/OneDrive - Instituto Nacional de Estadisticas/PE SSCC/Capacitacion R/Capacitacion-R-basico/sesion_2"
+## [1] "C:/Users/klehm/OneDrive - Instituto Nacional de Estadisticas/capacitacion/capacitacion_monitores/sesion_2"
 ```
 
 --
@@ -1064,13 +1066,6 @@ Esta función se utiliza para reordenar las filas de un data frame.
 
 ```r
 library(guaguas)
-```
-
-```
-## Warning: package 'guaguas' was built under R version 4.0.4
-```
-
-```r
 head(guaguas %&gt;% arrange(desc(n)), n = 3)
 ```
 
@@ -1600,6 +1595,9 @@ Nada de esto sería posible sin:
 - [`Introduction to R, de Data Carpentry`](https://datacarpentry.org/R-genomics/01-intro-to-R.html#functions)
 
 - [`Xaringan: Presentation Ninja, de Yihui Xie`](https://github.com/yihui/xaringan). Para generar esta presentación con la planilla ninja ⚔
+
+- [`Cheatsheet de dplyr`](https://github.com/rstudio/cheatsheets/raw/master/translations/spanish/data-transformation_Spanish.pdf)
+
 
 R for Data Science tiene una traducción al español realizada por la comunidad hisp
 ana de R:
