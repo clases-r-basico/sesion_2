@@ -4,7 +4,7 @@
     <title>Capacitación en R y herramientas de productividad</title>
     <meta charset="utf-8" />
     <meta name="author" content="" />
-    <meta name="date" content="2021-04-30" />
+    <meta name="date" content="2021-05-11" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -371,12 +371,12 @@ Un pequeño ejercicio...
 
 ```r
 library(readr)
-ene &lt;- read.csv(file = "data/ene-2019-11.csv")
+ene &lt;- read_csv(file = "data/ene-2019-11.csv")
 class(ene)
 ```
 
 ```
-## [1] "data.frame"
+## [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame"
 ```
 
 ```r
@@ -559,15 +559,24 @@ Existen múltiples formas de seleccionar las columnas utilizando esta función.
 
 ```r
 library(dplyr)
+```
+
+```
+## Warning: package 'dplyr' was built under R version 4.0.5
+```
+
+```r
 head(select(ene, ano_encuesta, mes_encuesta, cae_especifico, b1, b14_rev4cl_caenes),
      n = 3) # el argumento n corresponde a la función "head"
 ```
 
 ```
-##   ano_encuesta mes_encuesta cae_especifico b1 b14_rev4cl_caenes
-## 1         2019           10             17 NA                NA
-## 2         2019           10             17 NA                NA
-## 3         2019           10              7  7                 2
+## # A tibble: 3 x 5
+##   ano_encuesta mes_encuesta cae_especifico    b1 b14_rev4cl_caenes
+##          &lt;dbl&gt;        &lt;dbl&gt;          &lt;dbl&gt; &lt;dbl&gt;             &lt;dbl&gt;
+## 1         2019           10             17    NA                NA
+## 2         2019           10             17    NA                NA
+## 3         2019           10              7     7                 2
 ```
 
 --
@@ -583,7 +592,9 @@ head(select(ene, 1, 2, 3, 4, 5),
 ```
 
 ```
+## # A tibble: 3 x 5
 ##     idrph ano_trimestre mes_central id_identificacion id_directorio
+##     &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;             &lt;dbl&gt;         &lt;dbl&gt;
 ## 1  808409          2019          11            173296         21343
 ## 2  808410          2019          11            173296         21343
 ## 3 1100843          2019          11            235727         16373
@@ -611,7 +622,9 @@ head(select(ene, c(idrph:mes_central)), n = 3)
 ```
 
 ```
+## # A tibble: 3 x 3
 ##     idrph ano_trimestre mes_central
+##     &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;
 ## 1  808409          2019          11
 ## 2  808410          2019          11
 ## 3 1100843          2019          11
@@ -630,7 +643,9 @@ head(select(ene, -c(4:length(ene))), n = 3)
 ```
 
 ```
+## # A tibble: 3 x 3
 ##     idrph ano_trimestre mes_central
+##     &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;
 ## 1  808409          2019          11
 ## 2  808410          2019          11
 ## 3 1100843          2019          11
@@ -687,10 +702,12 @@ head(select(ene, idrph, edad, sexo, cine), n = 3)
 ```
 
 ```
-##     idrph edad sexo cine
-## 1  808409   79    1    5
-## 2  808410   71    2    8
-## 3 1100843   53    1    5
+## # A tibble: 3 x 4
+##     idrph  edad  sexo  cine
+##     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  808409    79     1     5
+## 2  808410    71     2     8
+## 3 1100843    53     1     5
 ```
 
 --
@@ -705,14 +722,12 @@ head(select(ene, idrph, ends_with("caenes")), n = 3)
 ```
 
 ```
-##     idrph b13_rev4cl_caenes b14_rev4cl_caenes e18_rev4cl_caenes
-## 1  808409                NA                NA                15
-## 2  808410                NA                NA                16
-## 3 1100843                 3                 2                NA
-##   r_p_rev4cl_caenes
-## 1                NA
-## 2                NA
-## 3                 3
+## # A tibble: 3 x 5
+##     idrph b13_rev4cl_caenes b14_rev4cl_caenes e18_rev4cl_caenes r_p_rev4cl_caen~
+##     &lt;dbl&gt;             &lt;dbl&gt;             &lt;dbl&gt;             &lt;dbl&gt;            &lt;dbl&gt;
+## 1  808409                NA                NA                15               NA
+## 2  808410                NA                NA                16               NA
+## 3 1100843                 3                 2                NA                3
 ```
 
 ---
@@ -1194,7 +1209,7 @@ class(ene$idrph)
 ```
 
 ```
-## [1] "integer"
+## [1] "numeric"
 ```
 
 --

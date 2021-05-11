@@ -367,7 +367,7 @@ Un pequeño ejercicio...
 
 ```{r, warning=FALSE}
 library(readr)
-ene <- read.csv(file = "data/ene-2019-11.csv")
+ene <- read_csv(file = "data/ene-2019-11.csv")
 class(ene)
 dim(ene)
 ```
