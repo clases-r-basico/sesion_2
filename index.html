@@ -4,7 +4,7 @@
     <title>Capacitación en R y herramientas de productividad</title>
     <meta charset="utf-8" />
     <meta name="author" content="" />
-    <meta name="date" content="2021-05-11" />
+    <meta name="date" content="2021-05-12" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -559,13 +559,6 @@ Existen múltiples formas de seleccionar las columnas utilizando esta función.
 
 ```r
 library(dplyr)
-```
-
-```
-## Warning: package 'dplyr' was built under R version 4.0.5
-```
-
-```r
 head(select(ene, ano_encuesta, mes_encuesta, cae_especifico, b1, b14_rev4cl_caenes),
      n = 3) # el argumento n corresponde a la función "head"
 ```

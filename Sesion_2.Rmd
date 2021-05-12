@@ -541,7 +541,7 @@ Existen múltiples formas de seleccionar las columnas utilizando esta función.
 
 --
 
-```{r}
+```{r, warning=FALSE}
 library(dplyr)
 head(select(ene, ano_encuesta, mes_encuesta, cae_especifico, b1, b14_rev4cl_caenes),
      n = 3) # el argumento n corresponde a la función "head"
